@@ -38,11 +38,11 @@
 
     texto = "";
     do {
-        window.alert(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
-        window.alert(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
-        window.alert(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
+         console.log(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
+         console.log(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
+         console.log(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
         jogada = "";
-        window.alert("Digite a posição da sua peça Jogador" + jogadorDaVez);
+         console.log("Digite a posição da sua peça Jogador" + jogadorDaVez);
         jogada = window.prompt('Enter a value for jogada');
         if (validaPosicao(jogada)) {
             if (jogada.length() == 3) {
@@ -52,7 +52,7 @@
                 linha = parseInt(jogada.charAt(0));
                 coluna = parseInt(jogada.charAt(2));
             }
-            window.alert("Linha: " + linha + "Coluna: " + coluna);
+             console.log("Linha: " + linha + "Coluna: " + coluna);
 
             // Verificar se a 'jogada' é valida
             // Converter a jogada texto em dois inteiros linha e coluna
@@ -60,32 +60,32 @@
                 tabuleiro[3 * linha + coluna] = jogadorDaVez;
                 tabuleiroValido = validaTabuleiro(jogadorDaVez, tabuleiro);
             } else {
-                window.alert("Posição ocupada, jogue novamente");
+                 console.log("Posição ocupada, jogue novamente");
 
                 // Informar ao jogador 1 que a posição está preenchida, é inválida e ele precisa informar uma posição válida
             }
         } else {
-            window.alert("Posição invalida");
+             console.log("Posição invalida");
         }
 
         // Verificar o tabuleiro, se houve ganhador ou empate, finalizar o jogo
         // Verificar jogada vencedora nas linhas
     } while (tabuleiroValido == 0);
     if (tabuleiroValido < 9) {
-        window.alert("Vencedor: Jogador " + jogadorDaVez);
+         console.log("Vencedor: Jogador " + jogadorDaVez);
     } else {
-        window.alert("Empate");
+         console.log("Empate");
     }
-    window.alert(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
-    window.alert(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
-    window.alert(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
+     console.log(tabuleiro[0].ToString() + tabuleiro[1] + tabuleiro[2]);
+     console.log(tabuleiro[3].ToString() + tabuleiro[4] + tabuleiro[5]);
+     console.log(tabuleiro[6].ToString() + tabuleiro[7] + tabuleiro[8]);
 }
 
 function validaPosicao(entrada) {
     var entradaValida;
 
     entradaValida = false;
-    window.alert(entrada.length());
+     console.log(entrada.length());
     if (entrada.length() == 3) {
         if (entrada.charAt(0) == "0" || entrada.charAt(0) == "1" || entrada.charAt(0) == "2") {
             if (entrada.charAt(2) == "0" || entrada.charAt(2) == "1" || entrada.charAt(2) == "2") {
