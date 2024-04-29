@@ -2,6 +2,8 @@
 
 **Autora:** Isabela
 
+**Data:** 29/04/24
+
 **Nome do Projeto:**
 Jogo da Velha no Arduino
 
