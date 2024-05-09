@@ -29,21 +29,22 @@ bool validaPosicao(String entrada) {
 }
 
 void setup() {
-  Serial.begin(115200); //Iniciar entrada serial
-  for (int i = 0; i <= 8; i++) {
-    tabuleiro[i] = 0;
-  }
-// Limpar/zerar o tabuleiro
-  for (int i = 0; i <= 8; i++) {
-    if (i == 3 || i == 6) {
-      Serial.println("");
-    }
-    //Serial.print(tabuleiro[i]);
-  }
+  Serial.begin(115200);  //Iniciar entrada serial
+  //Serial.print(tabuleiro[i]);
 }
+
 
 void loop() {
   velha = 1;
+  // Limpar/zerar o tabuleiro
+  // for (int i = 0; i <= 8; i++) {
+  //   if (i == 3 || i == 6) {
+  //     Serial.println("");
+  //   }
+  for (int i = 0; i <= 8; i++) {
+    tabuleiro[i] = 0;
+  }
+
   do {
     //imprime o tabuleiro inicial
     Serial.print(tabuleiro[0]);
@@ -59,28 +60,32 @@ void loop() {
     Serial.println(tabuleiro[8]);
 
     jogada = "";
-    while (!Serial.available()); //espera a entrada de uma string 
 
     Serial.print("Digite a posição da sua peça JOGADOR");
     Serial.println(jogadorDaVez);
+
+    while (!Serial.available())
+      ;  //espera a entrada de uma string
+
+
     jogada = Serial.readString();
 
     if (validaPosicao(jogada)) {
-      
-      linha = int(jogada[0]) - '0'; // Comverte a string em inteiro
+
+      linha = int(jogada[0]) - '0';  // Comverte a string em inteiro
       coluna = int(jogada[2]) - '0';
 
       Serial.print("Linha: ");
       Serial.print(linha);
       Serial.print(" Coluna: ");
       Serial.println(coluna);
-       //Verifica se a jogada é valida
+      //Verifica se a jogada é valida
 
       if (tabuleiro[3 * linha + coluna] == 0) {
         tabuleiro[3 * linha + coluna] = jogadorDaVez;
 
         if ((tabuleiro[0] == jogadorDaVez && tabuleiro[1] == jogadorDaVez && tabuleiro[2] == jogadorDaVez) || (tabuleiro[3] == jogadorDaVez && tabuleiro[4] == jogadorDaVez && tabuleiro[5] == jogadorDaVez) || (tabuleiro[6] == jogadorDaVez && tabuleiro[7] == jogadorDaVez && tabuleiro[8] == jogadorDaVez)) {
-          haVencedor = true; 
+          haVencedor = true;
           // verifica jogada vencedora nas linhas
 
         } else {
@@ -117,7 +122,7 @@ void loop() {
 
   //verificar o tabuleiro, se houver ganhador ou empate, finalizar o jogo.
   if (haVencedor) {
-    Serial.println("Parabéns pela vitória, jogador" && jogadorDaVez);
+    Serial.println("Parabéns pela vitória, jogador" + String(jogadorDaVez));
   } else {
     Serial.println("Deu VELHA!!!");
   }
